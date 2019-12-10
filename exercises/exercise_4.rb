@@ -7,3 +7,18 @@ puts "Exercise 4"
 puts "----------"
 
 # Your code goes here ...
+        Store.create(name: "Surrey", annual_revenue: 224000, mens_apparel: false, womens_apparel: true)
+        Store.create(name: "Whistler", annual_revenue: 1900000, mens_apparel: true, womens_apparel: false)
+        Store.create(name: "Yaletown", annual_revenue: 430000, mens_apparel: true, womens_apparel: true)
+
+        puts "this is how many stores there are: #{Store.count}"
+
+        @mens_stores = Store.where(mens_apparel: true)
+        @mens_stores.each do |n|
+          puts n.name, n.annual_revenue
+        end
+
+        @womens_stores = Store.where("annual_revenue > :milli AND womens_apparel = :bool", { milli: params[1000000], bool: params[:true] })
+        @womens_stores.each do |n|
+          puts n.name, n.annual_revenue
+        end
