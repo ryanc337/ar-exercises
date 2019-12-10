@@ -18,7 +18,7 @@ puts "----------"
           puts n.name, n.annual_revenue
         end
 
-        @womens_stores = Store.where("annual_revenue > :milli AND womens_apparel = :bool", { milli: params[1000000], bool: params[:true] })
+        @womens_stores = Store.where("annual_revenue < :milli AND womens_apparel = :bool", { milli: 1000000, bool: :true })
         @womens_stores.each do |n|
           puts n.name, n.annual_revenue
         end
