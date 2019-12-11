@@ -10,3 +10,18 @@ puts "Exercise 7"
 puts "----------"
 
 # Your code goes here ...
+class Employee
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :hourly_rate, presence: true
+  validates :store, presence: true
+  validates :hourly_rate, :money
+
+  def money 
+    if hourly_rate.present? && hourly_rate < 40 || hourly_rate > 200
+      errors.add(:hourly_rate, "Cannot be below 45 or over 200")
+    end
+  end
+
+end
+
